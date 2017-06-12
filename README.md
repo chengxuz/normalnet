@@ -18,7 +18,7 @@ The decoder starts from the low-resolution representation and uses convolution a
 The structure of the encoder is the same as conv1 to conv5 of [VGG-16](<https://arxiv.org/pdf/1409.1556.pdf>) network and the decoder is symmetric to the encoder. 
 To help the decoder get multi-scale feature maps, skip connections from corresponding layers of encoder to that of decoder are added to the network. 
 
-The description of the structure in config files used by the training is in "normal\_pred/normals\_config\_fcnvgg16.cfg".
+The description of the structure in config files used by the training is in "[normal\_pred/normals\_config\_fcnvgg16.cfg](<https://github.com/chengxuz/normalnet/blob/master/normal_pred/normals_config_fcnvgg16.cfg>)".
 
 ## Implementation
 
