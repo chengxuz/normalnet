@@ -42,9 +42,17 @@ Training scheme used is similar to that mentioned in the paper.
 [RMSprop](<https://www.coursera.org/learn/neural-networks/lecture/YQHki/rmsprop-divide-the-gradient-by-a-running-average-of-its-recent-magnitude>) is used for optimization and the loss used is the inverse of the dot product of normalzied surface normals and predicted normals.
 The learning rate is set to be 0.001 at the beginning and reduced to 0.0005 after 300K batches, while the batch size is 32. 
 The training is done on one NVIDIA Tesla P40. 
-Random cropping of $224 \times 224$ from $256 \times 256$ is used for data augmentation. 
+Random cropping of 224\*224 from 256\*256 is used for data augmentation. 
 Before sending into the network, every image is subtracted by 128.
 
 ## Performance
 
+Some predictions are shown in the notebook. 
+
 ## Future steps
+
+
+
+## Acknowledgement
+
+Thanks for my advisor Daniel Yamins for his advices and our neuroai-cluster for running the network training.
