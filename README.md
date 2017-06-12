@@ -45,6 +45,21 @@ The training is done on one NVIDIA Tesla P40.
 Random cropping of 224\*224 from 256\*256 is used for data augmentation. 
 Before sending into the network, every image is subtracted by 128.
 
+To start the training, one needs to run the following code under `normal_pred` directory: 
+```
+python train_normalnet.py --nport 27016 --pathconfig normals_config_fcnvgg16.cfg --expId rms_momopt --whichloss 1 --namefunc normal_vgg16_tfutils
+``` 
+
+But as the dataset is stored in the cluster of NeuroAILab, one will need access to the cluster to start the training.
+
+## Code structure
+
+All training related codes are stored in [`normal_pred`](<https://github.com/chengxuz/normalnet/tree/master/normal_pred>) directory.
+As mentioned, [`train_normalnet.py`](<https://github.com/chengxuz/normalnet/blob/master/normal_pred/train_normalnet.py>) is the entrance to start the training.
+Functions to build the network are stored in [`normal_encoder_asymmetric_with_bypass.py`](<https://github.com/chengxuz/normalnet/blob/master/normal_pred/normal_encoder_asymmetric_with_bypass.py>).
+Related help functions are in [`model.py`](<https://github.com/chengxuz/normalnet/blob/master/normal_pred/model.py>).
+The definition of the network is in [`normals_config_fcnvgg16.cfg`](<https://github.com/chengxuz/normalnet/blob/master/normal_pred/normals_config_fcnvgg16.cfg>).
+
 ## Performance
 
 Some predictions are shown in the [notebook](<https://github.com/chengxuz/normalnet/blob/master/Prediction.ipynb>).
