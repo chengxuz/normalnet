@@ -18,7 +18,7 @@ The decoder starts from the low-resolution representation and uses convolution a
 The structure of the encoder is the same as conv1 to conv5 of [VGG-16](<https://arxiv.org/pdf/1409.1556.pdf>) network and the decoder is symmetric to the encoder. 
 To help the decoder get multi-scale feature maps, skip connections from corresponding layers of encoder to that of decoder are added to the network. 
 
-The description of the structure in config files used by the training is in "[normal\_pred/normals\_config\_fcnvgg16.cfg](<https://github.com/chengxuz/normalnet/blob/master/normal_pred/normals_config_fcnvgg16.cfg>)".
+The description of the structure in config file used by the training is in "[normal\_pred/normals\_config\_fcnvgg16.cfg](<https://github.com/chengxuz/normalnet/blob/master/normal_pred/normals_config_fcnvgg16.cfg>)".
 
 ## Implementation
 
@@ -29,7 +29,21 @@ Therefore, to run the training and validation, one will also need to connect to 
 
 ## Dataset
 
+The dataset used is generated using a realistic game engine, [Unity 5](<https://unity3d.com>).
+A large number of objects are randomly sampled from a large 3D object dataset [ShapeNet](<https://www.shapenet.org/>).
+The scales and orientations of the objects are randomly sampled and then the objects are placed into a large room.
+
+The images and surface normals generated were used in this experiment. 
+The example images can be seen in the notebook.
+
 ## Training
+
+Training scheme used is similar to that mentioned in the paper. 
+[RMSprop](<https://www.coursera.org/learn/neural-networks/lecture/YQHki/rmsprop-divide-the-gradient-by-a-running-average-of-its-recent-magnitude>) is used for optimization and the loss used is the inverse of the dot product of normalzied surface normals and predicted normals.
+The learning rate is set to be 0.001 at the beginning and reduced to 0.0005 after 300K batches, while the batch size is 32. 
+The training is done on one NVIDIA Tesla P40. 
+Random cropping of $224\times224$ from $256\times256$ is used for data augmentation. 
+Before sending into the network, every image is subtracted by 128.
 
 ## Performance
 
